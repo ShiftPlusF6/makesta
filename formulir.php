@@ -65,32 +65,90 @@
             </div>
         </div>
     </section> -->
-    <div class="container">
+    <div class="container" style="width: 300px;">
         <form action="" method="POST">
-            <label for="nama">Nama</label> <input type="text" name="nama" required><br>
-            <label for="NIK">NIK</label> <input type="text" name="NIK" required><br>
-            <label for="tempat_lahir">tempat_lahir</label><input type="text" name="tempat_lahir" required><br>
-            <label for="tgl_lahir">tgl_lahir</label><input type="date" name="tgl_lahir" required><br>
-            <article>Jenis Kelamin</article>
-            <input type="radio" value="laki" id="laki" name="tgl_lahir" required> <label for="laki">Laki - Laki</label>
-            <input type="radio" value="perempuan" id="perempuan" name="tgl_lahir" required> <label for="perempuan">perempuan</label><br>
-            <label for="alamat">alamat</label><textarea name="alamat" id="alamat" cols="30" rows="10"></textarea><br>
-            <article>Nama ortu</article>
-            <label for="ayah">ayah</label> <input type="text" name="ayah" required><br>
-            <label for="ibu">ibu</label> <input type="text" name="ayah" required><br>
-            <label for="no_hp">no_hp</label> <input type="text" name="ayah" required><br>
-            <label for="hobi">hobi</label> <input type="text" name="hobi" required><br>
-            <label for="ig">instagram</label> <input type="text" name="ig"><br>
-            <label for="fb">facebook</label> <input type="text" name="fb"><br>
-            <label for="twitter">instagram</label> <input type="text" name="twitter"><br>
+            <div class="mb-3">
+                <label for="nama" class="form-label" required="">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama">
+            </div>
+            <div class="mb-3">
+                <label for="nik" class="form-label" required="">NIK</label>
+                <input type="text" class="form-control" id="nik" name="nik">
+            </div>
+            <div class="mb-3">
+                <label for="tempat_lahir" class="form-label" required="">Tempat Lahir</label>
+                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir">
+            </div>
+            <div class="mb-3">
+                <label for="tgl_lahir" class="form-label" required="">Tanggal Lahir</label>
+                <input type="date" class="form-control" id="ttl">
+            </div>
+            <div class="mb-3">
+                <label for="jenis_kelamin" class="form-label" required="">Jenis Kelamin</label> <br>
+                <input type="radio" value="laki" id="laki" name="tgl_lahir" required> <label for="laki">Laki - Laki</label>
+                <input type="radio" value="perempuan" id="perempuan" name="tgl_lahir" required> <label for="perempuan">perempuan</label>
+            </div>
+            <div class="mb-3">
+                <label for="alamat" class="form-label" required="">Alamat</label>
+                <textarea class="form-control" aria-label="With textarea" name="motto"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="ayah" class="form-label" required="">Nama Ayah</label>
+                <input type="text" class="form-control" id="ayah" name="ayah">
+            </div>
+            <div class="mb-3">
+                <label for="ibu" class="form-label" required="">Nama Ibu</label>
+                <input type="text" class="form-control" id="ibu" name="ibu">
+            </div>
+            <div class="mb-3">
+                <label for="no_hp" class="form-label" required="">No HP/WA</label>
+                <input type="no_hp" class="form-control" id="no_hp" name="no_hp">
+            </div>
+            <div class="mb-3">
+                <label for="hobi" class="form-label" required="">Hobi</label>
+                <input type="hobi" class="form-control" id="hobi" name="hobi">
+            </div>
+            <div class="mb-3">
+                <label for="ig" class="form-label" required="">Instagram</label>
+                <input type="ig" class="form-control" id="ig" name="ig">
+            </div>
+            <div class="mb-3">
+                <label for="fb" class="form-label" required="">Facebook</label>
+                <input type="fb" class="form-control" id="fb" name="fb">
+            </div>
+            <div class="mb-3">
+                <label for="twitter" class="form-label" required="">Twitter</label>
+                <input type="twitter" class="form-control" id="twitter" name="twitter">
+            </div>
             <br>
             <h3>Data Pendidikan</h3>
-            <label for="sd">Sekolah Dasar</label> <input type="text" name="sd" required><br>
-            <label for="sltp">Smp/Mts</label> <input type="text" name="sltp" required><br>
-            <label for="slta">Smk/Sma/MA</label> <input type="text" name="slta"><br>
-            <label for="pt">perguruan tinggi</label> <input type="text" name="pt"><br>
-            <label for="pp">pondok pesantren</label> <input type="text" name="pp"><br>
-            <label for="mh">Motto Hidup</label> <input type="text" name="mh"><br>
+            <div class="mb-3">
+                <label for="sd" class="form-label" required="">SD/MI</label>
+                <input type="sd" class="form-control" id="sd" name="sd">
+            </div>
+            <div class="mb-3">
+                <label for="smp" class="form-label" required="">SMP/MTS</label>
+                <input type="smp" class="form-control" id="smp" name="smp">
+            </div>
+            <div class="mb-3">
+                <label for="sma" class="form-label" required="">SMA/SMK/MA</label>
+                <input type="sma" class="form-control" id="sma" name="sma">
+            </div>
+            <div class="mb-3">
+                <label for="perguruan_tinggi" class="form-label" required="">Perguruan Tinggi</label>
+                <input type="perguruan_tinggi" class="form-control" id="perguruan_tinggi" name="perguruan_tinggi">
+            </div>
+            <div class="mb-3">
+                <label for="pondok" class="form-label" required="">Pondok Pesantren</label>
+                <input type="pondok" class="form-control" id="pondok" name="pondok">
+            </div>
+            <div class="mb-3">
+                <label for="motto" class="form-label" required="">Motto Hidup</label>
+                <textarea class="form-control" aria-label="With textarea" name="motto"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="button">Simpan</button>
+            </div>
         </form>
     </div>
 </body>
