@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2022 at 06:11 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Aug 27, 2022 at 07:50 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,6 +33,18 @@ CREATE TABLE `materi` (
   `nama_materi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `materi`
+--
+
+INSERT INTO `materi` (`kode_materi`, `nama_materi`) VALUES
+(1, 'Aswaja'),
+(2, 'Ke NU an'),
+(3, 'IPNU IPPNU'),
+(4, 'Ke Indonesiaan'),
+(5, 'Tradisi Amaliyah'),
+(6, 'Ke Organisasi an');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +57,14 @@ CREATE TABLE `nilai_materi` (
   `jumlah` int(11) NOT NULL,
   `kategori` enum('A','B','C','D') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nilai_materi`
+--
+
+INSERT INTO `nilai_materi` (`kode_peserta`, `kode_materi`, `jumlah`, `kategori`) VALUES
+(2, 1, 89, 'B'),
+(1, 2, 33, 'D');
 
 -- --------------------------------------------------------
 
@@ -58,6 +79,14 @@ CREATE TABLE `nilai_peserta` (
   `kategori_lulus` enum('A','B','C','D') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `nilai_peserta`
+--
+
+INSERT INTO `nilai_peserta` (`kode_peserta`, `jumlah`, `rata_rata`, `kategori_lulus`) VALUES
+(2, 89, 4, 'B'),
+(1, 33, 4, 'B');
+
 -- --------------------------------------------------------
 
 --
@@ -68,25 +97,33 @@ CREATE TABLE `peserta` (
   `kode_peserta` int(11) NOT NULL,
   `nik` varchar(16) NOT NULL,
   `nama` varchar(50) NOT NULL,
+  `tempat_lahir` varchar(30) NOT NULL,
   `ttl` date NOT NULL,
   `jenis_kelamin` enum('L','K') NOT NULL,
   `alamat` text NOT NULL,
   `ayah` varchar(50) NOT NULL,
   `ibu` varchar(50) NOT NULL,
   `no_hp` varchar(13) NOT NULL,
-  `instagram` blob NOT NULL,
-  `facebook` blob NOT NULL,
-  `twitter` blob NOT NULL,
+  `instagram` varchar(30) NOT NULL,
+  `facebook` varchar(30) NOT NULL,
+  `twitter` varchar(30) NOT NULL,
+  `sd` varchar(30) NOT NULL,
+  `smp` varchar(30) NOT NULL,
+  `sma` varchar(30) DEFAULT NULL,
+  `perguruan_tinggi` varchar(30) DEFAULT NULL,
+  `pondok` varchar(30) DEFAULT NULL,
   `foto` blob NOT NULL,
-  `email` tinyblob NOT NULL
+  `email` varchar(30) NOT NULL,
+  `motto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peserta`
 --
 
-INSERT INTO `peserta` (`kode_peserta`, `nik`, `nama`, `ttl`, `jenis_kelamin`, `alamat`, `ayah`, `ibu`, `no_hp`, `instagram`, `facebook`, `twitter`, `foto`, `email`) VALUES
-(1, 'klho;', 'kgkj', '2022-08-03', 'L', 'alfa', 'zvz', 'adfa', 'asdfa', '', '', '', '', '');
+INSERT INTO `peserta` (`kode_peserta`, `nik`, `nama`, `tempat_lahir`, `ttl`, `jenis_kelamin`, `alamat`, `ayah`, `ibu`, `no_hp`, `instagram`, `facebook`, `twitter`, `sd`, `smp`, `sma`, `perguruan_tinggi`, `pondok`, `foto`, `email`, `motto`) VALUES
+(1, 'klho;', 'kgkj', 'wonoyoso', '2022-08-03', 'L', 'alfa', 'zvz', 'adfa', 'asdfa', 'nolep', 'nolep', 'nolep3', 'sdn wonoyoso', 'smp wonoyoso', 'sma wonoyoso?', 'stmik', 'stmik', '', 'akunolep', 'suka berenang sambil rebahan'),
+(2, 'dumy1', 'dummy1', 'kotabaru', '2022-08-23', 'L', 'simbang', 'gapunya', 'gapunya', '08080', 'nolep3', 'nolep4', 'nolep5', 'sdn wonoyoso', 'smp wonoyoso', 'sma wonoyoso?', 'stmik', 'stmik', '', 'kkk', 'hidup sederhana asal kaya');
 
 -- --------------------------------------------------------
 
@@ -100,6 +137,15 @@ CREATE TABLE `postest` (
   `nilai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `postest`
+--
+
+INSERT INTO `postest` (`kode_peserta`, `kode_materi`, `nilai`) VALUES
+(1, 6, 5),
+(1, 3, 0),
+(2, 6, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -111,6 +157,16 @@ CREATE TABLE `presensi` (
   `kode_materi` int(11) NOT NULL,
   `nilai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `presensi`
+--
+
+INSERT INTO `presensi` (`kode_peserta`, `kode_materi`, `nilai`) VALUES
+(2, 1, 5),
+(1, 6, 0),
+(1, 6, 10),
+(2, 6, 10);
 
 -- --------------------------------------------------------
 
@@ -124,6 +180,16 @@ CREATE TABLE `pretest` (
   `nilai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pretest`
+--
+
+INSERT INTO `pretest` (`kode_peserta`, `kode_materi`, `nilai`) VALUES
+(2, 1, 5),
+(2, 3, 0),
+(1, 2, 5),
+(1, 2, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +201,14 @@ CREATE TABLE `respon` (
   `kode_materi` int(11) NOT NULL,
   `nilai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `respon`
+--
+
+INSERT INTO `respon` (`kode_peserta`, `kode_materi`, `nilai`) VALUES
+(2, 3, 5),
+(1, 4, 0);
 
 --
 -- Indexes for dumped tables
@@ -151,6 +225,12 @@ ALTER TABLE `materi`
 --
 ALTER TABLE `nilai_materi`
   ADD KEY `kode_materi` (`kode_materi`),
+  ADD KEY `kode_peserta` (`kode_peserta`);
+
+--
+-- Indexes for table `nilai_peserta`
+--
+ALTER TABLE `nilai_peserta`
   ADD KEY `kode_peserta` (`kode_peserta`);
 
 --
@@ -177,8 +257,8 @@ ALTER TABLE `presensi`
 -- Indexes for table `pretest`
 --
 ALTER TABLE `pretest`
-  ADD PRIMARY KEY (`kode_peserta`),
-  ADD KEY `kode_materi` (`kode_materi`);
+  ADD KEY `kode_materi` (`kode_materi`),
+  ADD KEY `kode_peserta` (`kode_peserta`) USING BTREE;
 
 --
 -- Indexes for table `respon`
@@ -195,13 +275,13 @@ ALTER TABLE `respon`
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `kode_materi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kode_materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `kode_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kode_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -213,6 +293,12 @@ ALTER TABLE `peserta`
 ALTER TABLE `nilai_materi`
   ADD CONSTRAINT `nilai_materi_ibfk_1` FOREIGN KEY (`kode_materi`) REFERENCES `materi` (`kode_materi`),
   ADD CONSTRAINT `nilai_materi_ibfk_2` FOREIGN KEY (`kode_peserta`) REFERENCES `peserta` (`kode_peserta`);
+
+--
+-- Constraints for table `nilai_peserta`
+--
+ALTER TABLE `nilai_peserta`
+  ADD CONSTRAINT `nilai_peserta_ibfk_1` FOREIGN KEY (`kode_peserta`) REFERENCES `peserta` (`kode_peserta`);
 
 --
 -- Constraints for table `postest`
